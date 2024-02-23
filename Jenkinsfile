@@ -2,9 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Get Nodes') {
             steps {
-                echo 'Hello World'
+                script {
+                    withKubeConfig(credentialsId: 'kubeconfig') {
+                        sh (
+                            '''
+                            kubectl get nodes
+                            '''
+                        )
+                    }
+                }
             }
         }
     }
