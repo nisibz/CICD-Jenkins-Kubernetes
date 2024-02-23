@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cicd-jenkins-kubernetes-deployment
+  labels:
+    app: cicd-jenkins-kubernetes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cicd-jenkins-kubernetes
+  template:
+    metadata:
+      labels:
+        app: cicd-jenkins-kubernetes 
+    spec:
+      containers:
+      - name: nodeserver
+        image: nisibz/cicd-jenkins-kubernetes:${VERSION}
+        ports:
+        - containerPort: 3000

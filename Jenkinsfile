@@ -13,5 +13,19 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    withKubeConfig(credentialsId: 'kubeconfig') {
+                        sh (
+                            '''
+                            cat kubernetes/deployment.yml | envsubst | kubectl apply -f -
+                            kubectl apply -f kubernetes/service.yml
+                            '''
+                        )
+                    }
+                }
+            }
+        }
     }
 }
