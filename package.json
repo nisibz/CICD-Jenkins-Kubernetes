@@ -1,0 +1,23 @@
+{
+  "name": "cicd-jenkins-kubernetes",
+  "version": "1.0.0",
+  "description": "This project is designed with Continuous Integration/Continuous Deployment (CI/CD) in mind using Jenkins, Kubernetes, GitLab, and Docker Hub.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nisibz/CICD-Jenkins-Kubernetes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nisibz/CICD-Jenkins-Kubernetes/issues"
+  },
+  "homepage": "https://github.com/nisibz/CICD-Jenkins-Kubernetes#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

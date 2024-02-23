@@ -2,16 +2,14 @@ pipeline {
     agent any
 
     stages {
-        stage('Get Nodes') {
+        stage('Build and Push Docker Image') {
             steps {
                 script {
-                    withKubeConfig(credentialsId: 'kubeconfig') {
-                        sh (
-                            '''
-                            kubectl get nodes
-                            '''
-                        )
-                    }
+                    env.VERSION = "0.0.${BUILD_NUMBER}"
+                    sh('''
+                        sudo docker build -t nisibz/cicd-jenkins-kubernetes:${VERSION} .
+                        sudo docker push nisibz/cicd-jenkins-kubernetes:${VERSION}
+                    ''')
                 }
             }
         }
